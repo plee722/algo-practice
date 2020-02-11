@@ -6,16 +6,20 @@
 
 
 function sumOfRoot(root) {
-  let sum = [0]
-  helper(root, "0", sum)
-
+  let binaryArr = []
+  helper(root, "0", binaryArr)
+  return binaryArr.reduce((acc, curr) => {
+    return acc + parseInt(curr, 2)
+  }, 0)
 }
 
 function helper(node, binStrPath, arr) {
   if (node) {
     if (!node.left && !node.right) {
-      arr[0] += parseInt()
+      arr.push(binStrPath + node.val)
+    } else {
+      helper(node.left, binStrPath + node.val, arr)
+      helper(node.right, binStrPath + node.val, arr)
     }
   }
-}
 }
